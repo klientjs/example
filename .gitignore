@@ -2,3 +2,4 @@ node_modules/
 coverage/
 .husky/
 .DS_STORE
+dist
