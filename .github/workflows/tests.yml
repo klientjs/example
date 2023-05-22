@@ -1,0 +1,55 @@
+name: Code analysis
+
+on:
+  push:
+  pull_request:
+    types: [reopened]
+  workflow_dispatch:
+    inputs:
+      node:
+        type: choice
+        description: Node version
+        required: false
+        options:
+          - ''
+          - 20.x
+          - 18.x
+          - 16.x
+          - 14.x
+          - 12.x
+
+permissions: read-all
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    env:
+      NODE_VERSION: ${{ github.event.inputs.node || vars.NODE_VERSION || '16.x' }}
+      CACHE: ${{ vars.CACHE_DEPENDENCIES != '0' && 'npm' || '' }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: ${{ env.CACHE }}
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Check vulnerabilities
+        continue-on-error: true
+        run: npm audit
+
+      - name: Prettier check
+        run: npm run prettier
+
+      - name: Linter check
+        run: npm run lint
+
+      - name: Run tests suites
+        run: npm run test
+
+      - name: Build dist files
+        run: npm run dist
