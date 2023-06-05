@@ -1,0 +1,55 @@
+@import 'plume-css';
+
+body {
+  margin: 0;
+}
+
+header {
+  border-bottom: 1px solid rgb(51, 51, 51, 0.3);
+
+  .switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+
+    a,
+    span {
+      margin-right: 5px;
+    }
+  }
+}
+
+table {
+  button {
+    margin: 0 !important;
+    padding: 0 10px !important;
+    min-width: min-content !important;
+  }
+}
+
+textarea {
+  min-height: 250px !important;
+}
+
+.header {
+  display: flex !important;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-between;
+  padding: 5px 15px;
+  min-height: 30px;
+  button,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0 !important;
+  }
+}
+
+.d-flex {
+  display: flex;
+}

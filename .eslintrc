@@ -17,6 +17,7 @@
     "prettier"
   ],
   "rules": {
+    "react-hooks/exhaustive-deps": "off",
     "consistent-return": "off",
     "no-unused-vars": "off",
     "no-continue": "off",
