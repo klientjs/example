@@ -1,7 +1,7 @@
 {
   "name": "@klient/example",
   "description": "An example usage of Klient packages and open-stack",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "open-stack": {
     "version": "1.6.1",
