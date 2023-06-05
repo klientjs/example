@@ -1,0 +1,5 @@
+#!/bin/bash
+
+COMMAND="$@"
+
+docker run --rm -v $PWD:/app -u 1000:1000 -w /app -p 3000:3000 -it node:16 bash -c "npm $COMMAND"

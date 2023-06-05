@@ -43,3 +43,15 @@ $ npm install
 # Start dev server
 $ npm start
 ```
+
+## Docker
+
+Just use `./npm` instead of `npm`
+
+```bash
+# Install dependencies
+$ ./npm install
+
+# Start dev server
+$ ./npm start
+```
