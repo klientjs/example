@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FormikErrors, FormikHelpers } from 'formik';
-import { AxiosError } from 'axios';
+import { AxiosError } from '@klient/core';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import klient from '../../../../api';
