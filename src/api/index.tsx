@@ -19,29 +19,24 @@ type ExtendedKlient = Klient & JWTKlientExtended & RestKlientExtended & MockKlie
 //
 // Build Klient instance
 //
-const klient = new Klient<Parameters>({
-  //
-  // Define API url
-  //
-  url: 'http://example.localhost',
+const klient = new Klient<Parameters>('http://example.localhost') as ExtendedKlient;
 
-  //
-  // Initialize JWT config
-  //
-  jwt: {
-    login: {
-      url: '/auth',
-      method: 'POST'
-    },
-    storage: {
-      type: 'cookie',
-      options: {
-        name: 'klient-example',
-        path: '/'
-      }
+//
+// Initialize JWT config
+//
+klient.parameters.set('jwt', {
+  login: {
+    url: '/auth',
+    method: 'POST'
+  },
+  storage: {
+    type: 'cookie',
+    options: {
+      name: 'klient-example',
+      path: '/'
     }
   }
-}) as ExtendedKlient;
+});
 
 //
 // Register REST Resources
@@ -57,13 +52,13 @@ require('./mocks').default(klient); // eslint-disable-line @typescript-eslint/no
 // DEBUGGING TOOLS
 //
 if (process.env.NODE_ENV === 'development') {
-  // Enable
+  // Enable debug mode
   klient.parameters.set('debug', true);
-  // Check Klient in console
+  // Display initialized Klient instance in console
   console.log(klient); // eslint-disable-line no-console
-  // Listen for dispatch
+  // Listen for dispatch debugging
   klient.on('debug', console.log); // eslint-disable-line no-console
-  // Attach Klien to window for manually test
+  // Attach Klien to window for testing from web browser console
   (window as any).klient = klient; // eslint-disable-line @typescript-eslint/no-explicit-any
   // Enable data persistance in browser storage
   enableBrowserPersistance(klient);

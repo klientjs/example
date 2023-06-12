@@ -32,8 +32,8 @@
     "release": "release-it"
   },
   "dependencies": {
-    "@klient/core": "^1.3.0",
-    "@klient/jwt": "^1.2.0",
+    "@klient/core": "^1.5.0",
+    "@klient/jwt": "^1.3.0",
     "@klient/mock": "^1.1.2",
     "@klient/rest": "^1.1.0",
     "@klient/storage": "^1.1.0",
